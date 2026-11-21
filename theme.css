@@ -95,18 +95,14 @@ https://github.com/diegoeis/obsidianotion
    ====================================================== */
 
 .theme-light {
-  --color-accent-hsl: 205, 100%, 43%;
-
-  /* Notion Blue — the one structural accent. Used for the
-     active/focus signal, links and the interactive accent. */
-  --interactive-accent: #0075de;
-  --interactive-accent-hover: #005bab;
-  --color-accent: #0075de;
-
-  --text-accent: #0075de;
-  --text-accent-hover: #005bab;
-  --text-on-accent: #ffffff;
-  --text-on-accent-inverted: #0075de;
+  /* Accent — inherited, never declared.
+     Obsidian core derives --color-accent, --text-accent and
+     --interactive-accent from --accent-h/s/l, which it writes as an
+     inline style on <body> the moment you pick a colour in
+     Appearance settings. Re-declaring any of those here at
+     .theme-light level wins the cascade and freezes the accent to a
+     fixed value — exactly what 2.0.0–2.0.4 did with #0075de.
+     Leave them alone so the theme follows the user's choice. */
 
   /* Surfaces — warm paper sidebar, white content canvas. */
   --background-primary: #ffffff;
@@ -118,7 +114,7 @@ https://github.com/diegoeis/obsidianotion
   --background-modifier-active-hover: rgba(0, 0, 0, 0.08);
   --background-modifier-border: #e6e6e6;
   --background-modifier-border-hover: #d9d9d9;
-  --background-modifier-border-focus: #0075de;
+  --background-modifier-border-focus: var(--text-accent);
   --background-modifier-error: #fef1f0;
   --background-modifier-error-hover: #fce4e2;
   --background-modifier-success: #e9f6ea;
@@ -136,9 +132,9 @@ https://github.com/diegoeis/obsidianotion
   --text-error: #eb5757;
   --text-success: #1aae39;
   --text-warning: #dd5b00;
-  --text-selection: rgba(0, 117, 222, 0.16);
+  --text-selection: hsla(var(--color-accent-hsl), 0.16);
   --text-highlight-bg: rgba(255, 212, 0, 0.32);
-  --caret-color: #0075de;
+  --caret-color: var(--text-accent);
 
   --divider-color: #e6e6e6;
   --scrollbar-thumb-bg: rgba(0, 0, 0, 0.13);
@@ -151,16 +147,7 @@ https://github.com/diegoeis/obsidianotion
    ====================================================== */
 
 .theme-dark {
-  --color-accent-hsl: 205, 90%, 60%;
-
-  --interactive-accent: #4dabf7;
-  --interactive-accent-hover: #74c0fc;
-  --color-accent: #4dabf7;
-
-  --text-accent: #4dabf7;
-  --text-accent-hover: #74c0fc;
-  --text-on-accent: #0b0d12;
-  --text-on-accent-inverted: #4dabf7;
+  /* Accent — inherited, same reasoning as .theme-light above. */
 
   --background-primary: #1f1f1f;
   --background-primary-alt: #1f1f1f;
@@ -171,7 +158,7 @@ https://github.com/diegoeis/obsidianotion
   --background-modifier-active-hover: rgba(255, 255, 255, 0.09);
   --background-modifier-border: #2c2c2c;
   --background-modifier-border-hover: #3a3a3a;
-  --background-modifier-border-focus: #4dabf7;
+  --background-modifier-border-focus: var(--text-accent);
   --background-modifier-error: #3a2422;
   --background-modifier-error-hover: #482a27;
   --background-modifier-success: #1e3324;
@@ -187,9 +174,9 @@ https://github.com/diegoeis/obsidianotion
   --text-error: #ff6b6b;
   --text-success: #51cf66;
   --text-warning: #ffa94d;
-  --text-selection: rgba(77, 171, 247, 0.24);
+  --text-selection: hsla(var(--color-accent-hsl), 0.24);
   --text-highlight-bg: rgba(255, 212, 0, 0.24);
-  --caret-color: #4dabf7;
+  --caret-color: var(--text-accent);
 
   --divider-color: #2c2c2c;
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.13);
